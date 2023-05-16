@@ -1,177 +1,490 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Charts - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-    </head>
-    <body class="sb-nav-fixed">
-        <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-            <!-- Navbar Search-->
-            <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-                <div class="input-group">
-                    <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
-                    <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>DoctorFound</title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+    <link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
+</head>
+
+<body class="sb-nav-fixed">
+
+
+    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand-->
+        <a class="navbar-brand ps-3" href="index.html">DoctorFound</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i
+                class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+            <div class="input-group">
+                <input class="form-control" type="text" placeholder="Buscar" aria-label="Buscar"
+                    aria-describedby="btnNavbarSearch" />
+                <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i
+                        class="fas fa-search"></i></button>
+            </div>
+        </form>
+        <!-- Navbar-->
+        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#!">Ajustes</a></li>
+                    <li><a class="dropdown-item" href="#!">otro</a></li>
+                    <li>
+                        <hr class="dropdown-divider" />
+                    </li>
+                    <li><a class="dropdown-item" href="#!">Cerrar sesión</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+                <div class="sb-sidenav-menu">
+                    <div class="nav">
+                        <div class="sb-sidenav-menu-heading">Principal</div>
+                        <a class="nav-link" href="index.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                            Doctores
+                        </a>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Hospitales
+                        </a>
+                        <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Consultorios
+                        </a>
+                        <div class="sb-sidenav-menu-heading">Interfaz</div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
+                            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                            Layouts
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav">
+                                <a class="nav-link" href="layout-static.html">Static Navigation</a>
+                                <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
+                            aria-expanded="false" aria-controls="collapsePages">
+                            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+                            Páginas
+                            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
+                            data-bs-parent="#sidenavAccordion">
+                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                    data-bs-target="#pagesCollapseAuth" aria-expanded="false"
+                                    aria-controls="pagesCollapseAuth">
+                                    Autenticación
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne"
+                                    data-bs-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="login.html">Inicio de sesión</a>
+                                        <a class="nav-link" href="register.html">Registo de usuario</a>
+                                        <a class="nav-link" href="password.html">Olvidó Contraseña</a>
+                                    </nav>
+                                </div>
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                    data-bs-target="#pagesCollapseError" aria-expanded="false"
+                                    aria-controls="pagesCollapseError">
+                                    Error
+                                    <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                                </a>
+                                <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne"
+                                    data-bs-parent="#sidenavAccordionPages">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        <a class="nav-link" href="401.html">401 Page</a>
+                                        <a class="nav-link" href="404.html">404 Page</a>
+                                        <a class="nav-link" href="500.html">500 Page</a>
+                                    </nav>
+                                </div>
+                            </nav>
+                        </div>
+                        <div class="sb-sidenav-menu-heading">Adicional</div>
+                        <a class="nav-link" href="charts.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            Graficas
+                        </a>
+                        <a class="nav-link" href="tables.html">
+                            <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            Tablas
+                        </a>
+                    </div>
                 </div>
-            </form>
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
-                        <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                        <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="#!">Logout</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </nav>
-        <div id="layoutSidenav">
-            <div id="layoutSidenav_nav">
-                <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-                    <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
-                            </a>
-                            <div class="sb-sidenav-menu-heading">Interface</div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                                Layouts
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-                                </nav>
-                            </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
-                                <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                                Pages
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
-                                        Authentication
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="login.html">Login</a>
-                                            <a class="nav-link" href="register.html">Register</a>
-                                            <a class="nav-link" href="password.html">Forgot Password</a>
-                                        </nav>
-                                    </div>
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
-                                        Error
-                                        <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                                    </a>
-                                    <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
-                                        <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="401.html">401 Page</a>
-                                            <a class="nav-link" href="404.html">404 Page</a>
-                                            <a class="nav-link" href="500.html">500 Page</a>
-                                        </nav>
-                                    </div>
-                                </nav>
-                            </div>
-                            <div class="sb-sidenav-menu-heading">Addons</div>
-                            <a class="nav-link" href="charts.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                Charts
-                            </a>
-                            <a class="nav-link" href="tables.html">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
-                            </a>
-                        </div>
-                    </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
-                </nav>
-            </div>
-            <div id="layoutSidenav_content">
-                <main>
-                    <div class="container-fluid px-4">
-                        <h1 class="mt-4">Charts</h1>
-                        <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Charts</li>
-                        </ol>
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                Chart.js is a third party plugin that is used to generate the charts in this template. The charts below have been customized - for further customization options, please visit the official
-                                <a target="_blank" href="https://www.chartjs.org/docs/latest/">Chart.js documentation</a>
-                                .
-                            </div>
-                        </div>
-                        <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-chart-area me-1"></i>
-                                Area Chart Example
-                            </div>
-                            <div class="card-body"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-bar me-1"></i>
-                                        Bar Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myBarChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6">
-                                <div class="card mb-4">
-                                    <div class="card-header">
-                                        <i class="fas fa-chart-pie me-1"></i>
-                                        Pie Chart Example
-                                    </div>
-                                    <div class="card-body"><canvas id="myPieChart" width="100%" height="50"></canvas></div>
-                                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-            </div>
+                <div class="sb-sidenav-footer">
+                    <div class="small">Inicio de sesión como:</div>
+                    Juan Gómez
+                </div>
+            </nav>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="assets/demo/chart-pie-demo.js"></script>
-    </body>
+        <div id="layoutSidenav_content">
+            <main>
+
+                <div class="container-fluid px-4">
+                    <h1 class="mt-4">Nuestros Doctores</h1>
+                    <ol class="breadcrumb mb-4">
+
+                    </ol>
+                    <div class="row">
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top" src="Imagenes/doctor-brazos-cruzados-sobre-fondo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. José Torres</h5>
+                                <p class="card-text">Médico Pediatra trabaja el Imss No.6 </p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio1">★</label><!--
+                                      --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio2">★</label><!--
+                                      --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio3">★</label><!--
+                                      --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio4">★</label><!--
+                                      --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio5">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/vista-frontal-joven-doctora-traje-medico-blanco-estetoscopio-sonriendo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Teresa Hernández</h5>
+                                <p class="card-text">Cirujana general trabaja en Mediscin.</p>
+                                <a  href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center" class="clasificacion">
+                                      <input id="radio6" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio6">★</label><!--
+                                      --><input id="radio7" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio7">★</label><!--
+                                      --><input id="radio8" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio8">★</label><!--
+                                      --><input id="radio9" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio9">★</label><!--
+                                      --><input id="radio10" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio10">★</label>
+                                    </p>
+                                  </form>
+                                
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/atractivo-nutriologo-masculino-joven-bata-laboratorio-sonriendo-contra-fondo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. Santiago Jimenez</h5>
+                                <p class="card-text">Cirujano cardiotorácico trabaja en Issste </p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio11" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio11">★</label><!--
+                                      --><input id="radio12" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio12">★</label><!--
+                                      --><input id="radio13" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio13">★</label><!--
+                                      --><input id="radio14" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio14">★</label><!--
+                                      --><input id="radio15" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio15">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/vista-frontal-joven-doctora-traje-medico-blanco-estetoscopio-mascara-protectora-blanca-posando-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Casandra Salinas</h5>
+                                <p class="card-text">Cirujana ortopedista trabaja en Mediscin.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio16" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio16">★</label><!--
+                                      --><input id="radio17" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio17">★</label><!--
+                                      --><input id="radio18" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio18">★</label><!--
+                                      --><input id="radio19" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio19">★</label><!--
+                                      --><input id="radio20" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio20">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top" src="Imagenes/doctor-brazos-cruzados-sobre-fondo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. José Torres</h5>
+                                <p class="card-text">Médico Pediatra trabaja el Imss No.6 </p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio21" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio21">★</label><!--
+                                      --><input id="radio22" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio22">★</label><!--
+                                      --><input id="radio23" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio23">★</label><!--
+                                      --><input id="radio24" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio24">★</label><!--
+                                      --><input id="radio25" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio25">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/vista-frontal-joven-doctora-traje-medico-blanco-estetoscopio-sonriendo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Teresa Hernández</h5>
+                                <p class="card-text">Cirujana general trabaja en Mediscin.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio26" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio26">★</label><!--
+                                      --><input id="radio27" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio27">★</label><!--
+                                      --><input id="radio28" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio28">★</label><!--
+                                      --><input id="radio29" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio29">★</label><!--
+                                      --><input id="radio30" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio30">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/atractivo-nutriologo-masculino-joven-bata-laboratorio-sonriendo-contra-fondo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. Santiago Jimenez</h5>
+                                <p class="card-text">Cirujano cardiotorácico trabaja en Issste </p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio31" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio31">★</label><!--
+                                      --><input id="radio32" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio32">★</label><!--
+                                      --><input id="radio33" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio33">★</label><!--
+                                      --><input id="radio34" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio34">★</label><!--
+                                      --><input id="radio35" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio35">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/vista-frontal-joven-doctora-traje-medico-blanco-estetoscopio-mascara-protectora-blanca-posando-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Casandra Salinas</h5>
+                                <p class="card-text">Cirujana ortopedista trabaja en Mediscin.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio36" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio36">★</label><!--
+                                      --><input id="radio37" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio37">★</label><!--
+                                      --><input id="radio38" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio38">★</label><!--
+                                      --><input id="radio39" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio39">★</label><!--
+                                      --><input id="radio40" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio40">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top" src="Imagenes/doctor-brazos-cruzados-sobre-fondo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. José Torres</h5>
+                                <p class="card-text">Médico Pediatra trabaja el Imss No.6 </p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio41" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio41">★</label><!--
+                                      --><input id="radio42" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio42">★</label><!--
+                                      --><input id="radio43" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio43">★</label><!--
+                                      --><input id="radio44" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio44">★</label><!--
+                                      --><input id="radio45" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio45">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/vista-frontal-joven-doctora-traje-medico-blanco-estetoscopio-sonriendo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Teresa Hernández</h5>
+                                <p class="card-text">Cirujana general trabaja en Mediscin.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio46" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio46">★</label><!--
+                                      --><input id="radio47" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio47">★</label><!--
+                                      --><input id="radio48" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio48">★</label><!--
+                                      --><input id="radio49" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio49">★</label><!--
+                                      --><input id="radio50" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio50">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/atractivo-nutriologo-masculino-joven-bata-laboratorio-sonriendo-contra-fondo-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dr. Santiago Jimenez</h5>
+                                <p class="card-text">Cirujano cardiotorácico trabaja en Issste </p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio51" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio51">★</label><!--
+                                      --><input id="radio52" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio52">★</label><!--
+                                      --><input id="radio53" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio53">★</label><!--
+                                      --><input id="radio54" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio54">★</label><!--
+                                      --><input id="radio55" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio55">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+
+                        <div class="card" style="width: 16rem;">
+                            <img class="card-img-top"
+                                src="Imagenes/vista-frontal-joven-doctora-traje-medico-blanco-estetoscopio-mascara-protectora-blanca-posando-blanco.jpg"
+                                alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">Dra. Casandra Salinas</h5>
+                                <p class="card-text">Cirujana ortopedista trabaja en Mediscin.</p>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                                <form>
+                                    <p style="text-align:center"  class="clasificacion">
+                                      <input id="radio56" type="radio" name="estrellas" value="5"><!--
+                                      --><label for="radio56">★</label><!--
+                                      --><input id="radio57" type="radio" name="estrellas" value="4"><!--
+                                      --><label for="radio57">★</label><!--
+                                      --><input id="radio58" type="radio" name="estrellas" value="3"><!--
+                                      --><label for="radio58">★</label><!--
+                                      --><input id="radio59" type="radio" name="estrellas" value="2"><!--
+                                      --><label for="radio59">★</label><!--
+                                      --><input id="radio60" type="radio" name="estrellas" value="1"><!--
+                                      --><label for="radio60">★</label>
+                                    </p>
+                                  </form>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+            </main>
+            <footer class="py-4 bg-light mt-auto">
+                <div class="container-fluid px-4">
+                    <div class="d-flex align-items-center justify-content-between small">
+                        <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                        <div>
+                            <a href="#">Privacy Policy</a>
+                            &middot;
+                            <a href="#">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+        crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/popper.min.js"></script>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+</body>
+
 </html>
